@@ -1,0 +1,42 @@
+{
+  "name": "funwithimages",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "autoprefixer": "^7.1.1",
+    "webpack": "^2.6.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.5",
+    "precss": "^1.4.0",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.18.1",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/.bin/webpack-dev-server --config webpack.config.js --port 3001 --hot --inline",
+    "build": "./node_modules/.bin/webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vispercept/funWithImages.git"
+  },
+  "keywords": [],
+  "author": "Thomas König",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vispercept/funWithImages/issues"
+  },
+  "homepage": "https://github.com/Vispercept/funWithImages#readme"
+}
