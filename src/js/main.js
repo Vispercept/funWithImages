@@ -1,9 +1,13 @@
-const img1 = require('../img/Faces__1.png');
-var img = document.createElement('img');
-img.src = img1;
-img.className = 'image';
+const body = document.querySelector('body');
+const imagePath = require('../img/img.jpg');
 
-var body = document.querySelector('body');
+const img = document.createElement('img');
+img.src = imagePath;
+img.className = 'image';
 body.appendChild(img);
 
-console.log('hello');
+const img2 = document.createElement('img');
+img2.src = imagePath;
+img2.className = 'image';
+body.appendChild(img2);
+
