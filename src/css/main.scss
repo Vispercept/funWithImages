@@ -1,7 +1,19 @@
+html,
 body {
-  background: aquamarine;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.image {
-  width: 500px;
+.sliced-wrapper {
+  margin: 10vh 10vw;
+  box-sizing: border-box;
+  position: relative;
+  height: 80vh;
+}
+
+.slice {
+  position: absolute;
+  background-position: center;
+  /* Make the background image cover the area of the <div>, and clip the excess */
 }
