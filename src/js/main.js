@@ -25,14 +25,20 @@ for (var index = 0; index < numberOfSlices; index++) {
   slices.push({ img, randomY: random(-40, 40) })
 }
 
+initSlices();
 updateSlices();
 
-function updateSlices() {
+function initSlices() {
   slices.forEach(({ img, randomY }, index) => {
     img.style.backgroundImage = `url(${imagePath})`;
     img.style.webkitClipPath = `polygon(${(index-1)*(100/numberOfSlices)}% 0%, ${index*(100/numberOfSlices)}% 0%, ${index*(100/numberOfSlices)}% 100%, ${(index-1)*(100/numberOfSlices)}% 100%)`;
-    img.style.transform = `translate3d(0, ${randomY * gravity}px, 0)`;
     img.className = 'slice';
+  });
+}
+
+function updateSlices() {
+  slices.forEach(({ img, randomY }, index) => {
+    img.style.transform = `translate3d(0, ${randomY * gravity}px, 0)`;
   });
 }
 
