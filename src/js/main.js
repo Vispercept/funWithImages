@@ -1,6 +1,6 @@
 // image should be around 1000px
 const imagePath = require('../img/img.jpg');
-const numberOfSlices = 32;
+const numberOfSlices = 20;
 let gravity = 1;
 
 const wrapper = document.createElement('div');
@@ -29,13 +29,9 @@ updateSlices();
 
 function updateSlices() {
   slices.forEach(({ img, randomY }, index) => {
-    img.style.transform = `translate3d(0, ${randomY * gravity}px, 0)`;
-    img.style.left = `${(index) * (100 / numberOfSlices)}%`;
-    img.style.width = `${100 / numberOfSlices}%`;
-    img.style.height = '100%';
-    img.style.backgroundPositionX = `${(index + 1) * (100 / numberOfSlices)}%`;
-    img.style.backgroundPositionY = `${randomY * gravity}px`;
     img.style.backgroundImage = `url(${imagePath})`;
+    img.style.webkitClipPath = `polygon(${(index-1)*(100/numberOfSlices)}% 0%, ${index*(100/numberOfSlices)}% 0%, ${index*(100/numberOfSlices)}% 100%, ${(index-1)*(100/numberOfSlices)}% 100%)`;
+    img.style.transform = `translate3d(0, ${randomY * gravity}px, 0)`;
     img.className = 'slice';
   });
 }
