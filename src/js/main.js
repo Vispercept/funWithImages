@@ -1,6 +1,5 @@
-// image should be around 1000px
-const imagePath = require('../img/img.jpg');
-const numberOfSlices = 20;
+const imagePath = require('../img/1.jpg');
+const numberOfSlices = 10;
 let gravity = 1;
 
 const wrapper = document.createElement('div');
@@ -31,7 +30,12 @@ updateSlices();
 function initSlices() {
   slices.forEach(({ img, randomY }, index) => {
     img.style.backgroundImage = `url(${imagePath})`;
-    img.style.webkitClipPath = `polygon(${(index-1)*(100/numberOfSlices)}% 0%, ${index*(100/numberOfSlices)}% 0%, ${index*(100/numberOfSlices)}% 100%, ${(index-1)*(100/numberOfSlices)}% 100%)`;
+    img.style.webkitClipPath = `
+      polygon(
+        ${index*(100/numberOfSlices)}% 0%,
+        ${(index+1)*(100/numberOfSlices)}% 0%,
+        ${(index+1)*(100/numberOfSlices)}% 100%,
+        ${(index)*(100/numberOfSlices)}% 100%)`;
     img.className = 'slice';
   });
 }
@@ -48,15 +52,20 @@ function update({ clientX }) {
   updateSlices();
 }
 
+function randomness() {
+  slices = slices.map(slice => {
+    slice.randomY = random(-40, 40);
+    return slice;
+  })
+  updateSlices();
+}
+
 function keyPressed({keyCode}) {
   if (keyCode === 32) {
-    slices = slices.map(slice => {
-      slice.randomY = random(-40, 40);
-      return slice;
-    })
-    updateSlices();
+    randomness();
   }
 }
 
 document.addEventListener('mousemove', update)
 document.addEventListener('keyup', keyPressed)
+setInterval(randomness, 500);
