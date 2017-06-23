@@ -1,3 +1,4 @@
+import onScroll from './onScroll';
 const imagePath = require('../img/1.jpg');
 const numberOfSlices = 10;
 let gravity = 1;
@@ -47,12 +48,16 @@ function updateSlices() {
 }
 
 
-function update({ clientX }) {
-  gravity = clientX/window.innerWidth;
+function easeOutQuad(t) {
+  return t*(2-t)
+}
+
+function update({ y }) {
+  gravity = y/100;
   updateSlices();
 }
 
-function randomness() {
+function doRandomness() {
   slices = slices.map(slice => {
     slice.randomY = random(-40, 40);
     return slice;
@@ -62,10 +67,9 @@ function randomness() {
 
 function keyPressed({keyCode}) {
   if (keyCode === 32) {
-    randomness();
+    doRandomness();
   }
 }
 
-document.addEventListener('mousemove', update)
-document.addEventListener('keyup', keyPressed)
-setInterval(randomness, 500);
+document.addEventListener('keyup', keyPressed);
+onScroll(update);
